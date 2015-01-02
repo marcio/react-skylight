@@ -1,8 +1,8 @@
 {
   "name": "react-skylight",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A react component for modals and dialogs.",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,10 +19,14 @@
   "license": "MIT",
   "browserify": {
     "transform": [
-      ["reactify"]
+      [
+        "reactify"
+      ]
     ]
   },
   "dependencies": {
+    "bn.js": "0.15.2",
+    "miller-rabin": "1.1.1",
     "react": "^0.12.2"
   },
   "devDependencies": {

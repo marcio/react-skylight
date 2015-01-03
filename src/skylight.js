@@ -41,16 +41,16 @@ var SkyLight = React.createClass({
     render: function(){
 
         var overlay;
-        var display = this.state.isVisible ? {display: 'block'} : {display: 'none'};
+        var displayStyle = this.state.isVisible ? {display: 'block'} : {display: 'none'};
 
         if(this.props.showOverlay) {
-            overlay = (<div className="skylight-dialog__overlay" style={display}></div>);
+            overlay = (<div className="skylight-dialog__overlay" style={displayStyle}></div>);
         }
 
         return (
             <section className="skylight-wrapper">
                 {overlay}
-                <div className="skylight-dialog" style={display}>
+                <div className="skylight-dialog" style={displayStyle}>
                     <a role="button" className="skylight-dialog--close" onClick={this.hide}>&times;</a>
                     <h2>{this.props.title}</h2>
                     {this.props.children}

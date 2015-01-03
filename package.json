@@ -1,6 +1,6 @@
 {
   "name": "react-skylight",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A react component for modals and dialogs.",
   "main": "index.js",
   "scripts": {
@@ -33,8 +33,7 @@
   "peerDependencies": {
     "react": "^0.12.x"
   },
-  "devDependencies": {
-    "react": "0.12.x",
+  "dependencies": {
     "browserify": "^8.0.3",
     "reactify": "^0.17.1"
   }

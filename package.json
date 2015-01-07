@@ -4,7 +4,7 @@
   "description": "A react component for modals and dialogs.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,8 @@
   "keywords": [
     "React",
     "Modal",
-    "Dialog"
+    "Dialog",
+    "react-component"
   ],
   "tags": [
     "react",
@@ -34,7 +35,18 @@
     "react": "^0.12.x"
   },
   "dependencies": {
+    "react": "*",
+    "react-tools": "*",
     "browserify": "^8.0.3",
     "reactify": "^0.17.1"
+  },
+  "jest": {
+    "scriptPreprocessor": "preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "node_modules/react"
+    ]
+  },
+  "devDependencies": {
+    "jest-cli": "^0.2.1"
   }
 }

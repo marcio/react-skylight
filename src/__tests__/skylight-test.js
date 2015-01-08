@@ -42,4 +42,30 @@ describe('SkyLight', function() {
     });
 
 
+    it('Overlay cant be rendered if showOverlay is false', function() {
+        var skylight = TestUtils.renderIntoDocument(
+            <SkyLight showOverlay={false}></SkyLight>
+        );
+        var className = 'skylight-dialog__overlay';
+        var overlay = TestUtils.scryRenderedDOMComponentsWithClass(skylight, className);
+        expect(overlay.length).toEqual(0);
+    });
+
+
+    it('Should be set display:block when isVisible it was changed to true', function() {
+
+        var skylight = TestUtils.renderIntoDocument(
+            <SkyLight></SkyLight>
+        );
+
+        var instance = TestUtils.findRenderedComponentWithType(skylight, <SkyLight />);
+        var modalStyle = TestUtils.findRenderedDOMComponentWithClass(skylight, 'skylight-dialog');
+        expect(modalStyle.getDOMNode().style.display).toEqual('none');
+        instance.setState({isVisible: true});
+        expect(modalStyle.getDOMNode().style.display).toEqual('block');
+        instance.setState({isVisible: false});
+        expect(modalStyle.getDOMNode().style.display).toEqual('none');
+    });
+
+
 });

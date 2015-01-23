@@ -5,8 +5,10 @@ var SkyLight = React.createClass({
     propTypes: {
         title: React.PropTypes.string,
         showOverlay: React.PropTypes.bool,
-        onShow: React.PropTypes.func,
-        onClose: React.PropTypes.func,
+        beforeShow: React.PropTypes.func,
+        afterShow: React.PropTypes.func,
+        beforeClose: React.PropTypes.func,
+        afterClose: React.PropTypes.func,
         visible: React.PropTypes.bool
     },
 
@@ -25,16 +27,28 @@ var SkyLight = React.createClass({
     },
 
     show: function() {
+
+        if(this.props.beforeShow) {
+            this.props.beforeShow();
+        }
+
         this.setState({ isVisible: true });
-        if(this.props.onShow) {
-            this.props.onShow();
+
+        if(this.props.afterShow) {
+            this.props.afterShow();
         }
     },
 
     hide: function() {
+
+        if(this.props.beforeClose) {
+            this.props.beforeClose();
+        }
+
         this.setState({ isVisible: false });
-        if(this.props.onClose) {
-            this.props.onClose();
+
+        if(this.props.afterClose) {
+            this.props.afterClose();
         }
     },
 

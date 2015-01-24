@@ -73,7 +73,7 @@ React.render(<App/>, document.getElementById("content"));
 
 ```
 
-All Options
+Options
 -------------------
 ####title: (String)
 A title for your modal.
@@ -102,7 +102,7 @@ A callback functions to execute before and after open and before and after close
 
 
 
-CSS suggested 
+CSS (suggested)
 --------------------
 
 ```css
@@ -138,3 +138,4 @@ CSS suggested
 }
 ```
 
+##Enjoy!

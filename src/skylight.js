@@ -7,8 +7,7 @@ var SkyLight = React.createClass({
         beforeOpen: React.PropTypes.func,
         afterOpen: React.PropTypes.func,
         beforeClose: React.PropTypes.func,
-        afterClose: React.PropTypes.func,
-        visible: React.PropTypes.bool
+        afterClose: React.PropTypes.func
     },
     getDefaultProps: function () {
         return {

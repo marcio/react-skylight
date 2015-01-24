@@ -1,63 +1,56 @@
 var React = require('react');
 
 var SkyLight = React.createClass({
-
     propTypes: {
         title: React.PropTypes.string,
         showOverlay: React.PropTypes.bool,
-        beforeShow: React.PropTypes.func,
-        afterShow: React.PropTypes.func,
+        beforeOpen: React.PropTypes.func,
+        afterOpen: React.PropTypes.func,
         beforeClose: React.PropTypes.func,
         afterClose: React.PropTypes.func,
         visible: React.PropTypes.bool
     },
-
-
-    getDefaultProps: function() {
+    getDefaultProps: function () {
         return {
             title: '',
             showOverlay: true
         }
     },
-
-    getInitialState: function(){
-      return {
-          isVisible: false
-      };
+    getInitialState: function () {
+        return {
+            isVisible: false
+        };
     },
-
-    show: function() {
-
-        if(this.props.beforeShow) {
-            this.props.beforeShow();
+    show: function () {
+        this.setState({isVisible: true});
+    },
+    hide: function () {
+        this.setState({isVisible: false});
+    },
+    componentWillUpdate: function (nextProps, nextState) {
+        if (nextState.isVisible && this.props.beforeOpen) {
+            this.props.beforeOpen();
         }
 
-        this.setState({ isVisible: true });
-
-        if(this.props.afterShow) {
-            this.props.afterShow();
-        }
-    },
-
-    hide: function() {
-
-        if(this.props.beforeClose) {
+        if (!nextState.isVisible && this.props.beforeClose) {
             this.props.beforeClose();
         }
+    },
+    componentDidUpdate: function (prevProps, prevState) {
+        if (!prevState.isVisible && this.props.afterOpen) {
+            this.props.afterOpen();
+        }
 
-        this.setState({ isVisible: false });
-
-        if(this.props.afterClose) {
+        if (prevState.isVisible && this.props.afterClose) {
             this.props.afterClose();
         }
     },
-
-    render: function(){
+    render: function () {
 
         var overlay;
         var displayStyle = this.state.isVisible ? {display: 'block'} : {display: 'none'};
 
-        if(this.props.showOverlay) {
+        if (this.props.showOverlay) {
             overlay = (<div className="skylight-dialog__overlay" style={displayStyle}></div>);
         }
 

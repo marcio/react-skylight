@@ -1,9 +1,7 @@
 react-skylight
 ==============
 
-A react component for modals and dialogs
-
-## WIP.... This project still in development, use only if you know what you're doing or if you want help in development.
+React-SkyhLight is a simple react component for modals and dialogs, powerfull, lightweight and unopinionated in or design.
 
 
 Installation
@@ -13,16 +11,15 @@ Installation
 npm install react-skylight
 ```
 
-
 Features
 --------
 
 - Very simple modal/dialog
 - Unopinionated in or design, (CSS is not included, only a template is suggested (see more below).
-- Callback on show
-- Callback on hide
-
-
+- Callback before open
+- Callback after open
+- Callback before close
+- Callback after close
 
 
 How to use
@@ -30,36 +27,82 @@ How to use
 
 ```js
 
+//Require react-skylight
 var SkyLight = require('react-skylight').SkyLight;
 
-var Veiculos = React.createClass({
-    showFirstDialog: function(){
-        this.refs.fisrtDialog.show();
-    },
-    showSecondDialog: function(){
-        this.refs.secondDialog.show();
-    },
-    render:function(){
-        return (
-            <div>
-                <a role="button" onClick={this.showFirstDialog}>Open First</a>
-                <br />
-                <a role="button" onClick={this.showSecondDialog}>Open Second</a>
-                <SkyLight ref="fisrtDialog" title="My first dialog">
-                    Content for first dialog here.
-                </SkyLight>
-                <SkyLight ref="secondDialog" title="My second dialog">
-                    Content for second dialog here.
-                </SkyLight>
-            </div>
-        )
-    }
+var App = React.createClass({
+  showDialogWithCallBacks: function(){
+    this.refs.dialogWithCallBacks.show();
+  },
+  showSimpleDialog: function(){
+    this.refs.simpleDialog.show();
+  },
+  render:function(){
+    return (
+      <div>
+        <p>
+          <button onClick={this.showSimpleDialog}>Modal without callbacks</button>
+          <button onClick={this.showDialogWithCallBacks}>Modal with callbacks</button>
+        </p>
+        <SkyLight ref="dialogWithCallBacks" title="Hello!, I'm a modal with callbacks!"
+                  beforeOpen={this._executeBeforeFirstModalOpen}
+                  afterOpen={this._executeAfterFirstModalOpen}
+                  beforeClose={this._executeBeforeFirstModalClose}
+                  afterClose={this._executeAfterFirstModalClose}>I have callbacks!</SkyLight>
+        <SkyLight ref="simpleDialog" title="Hi, I'm a simple modal">
+          Hello, I dont have any callback.
+        </SkyLight>
+      </div>
+    )
+  },
+  _executeBeforeFirstModalOpen: function(){
+    alert('Executed before open');
+  },
+  _executeAfterFirstModalOpen: function(){
+    alert('Executed after open');
+  },
+  _executeBeforeFirstModalClose: function(){
+    alert('Executed before close');
+  },
+  _executeAfterFirstModalClose: function(){
+    alert('Executed after close');
+  }
 });
+
+React.render(<App/>, document.getElementById("content"));
+
+```
+
+All Options
+-------------------
+####title: (String)
+A title for your modal.
+``` html
+<SkyLight ref="myModal" title="TITLE FOR MODAL">Modal Content</SkyLight>
+```
+####showOverlay: (Boolean)
+Show modal with an overlay (true) or without an overlay (false).
+
+``` html
+<SkyLight ref="myModal" title="TITLE FOR MODAL" showOverlay={true}>Modal With Overlay</SkyLight>
+
+<SkyLight ref="myModal" title="TITLE FOR MODAL" showOverlay={false}>Modal Without Overlay</SkyLight>
+```
+
+
+####beforeOpen, afterOpen, beforeClose and afterClose: (Function)
+A callback functions to execute before and after open and before and after close a modal. You can use just the one you want.
+``` html
+<SkyLight ref="myModal" title="TITLE FOR MODAL" 
+            beforeOpen={myFunctionToExecuteBeforeOpen}
+            afterOpen={myFunctionToExecuteAfterOpen}
+            beforeClose={myFunctionToExecuteBeforeClose}
+            afterClose={myFunctionToExecuteAfterClose}>Modal Content</SkyLight>
 ```
 
 
 
-CSS suggested
+CSS suggested 
 --------------------
 
 ```css
@@ -95,17 +138,3 @@ CSS suggested
 }
 ```
 
-TODO
---------------------
-
-Tests
-
-Better Documentation
-
-More callbacks options
-
-More CSS Themes
-
-Site with examples
-
-...

@@ -1,7 +1,7 @@
 react-skylight
 ==============
 
-React-SkyhLight is a simple react component for modals and dialogs, powerfull, lightweight and unopinionated in or design.
+React-SkyLight is a simple react component for modals and dialogs, powerfull, lightweight and unopinionated in your design.
 
 
 Installation

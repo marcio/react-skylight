@@ -28,7 +28,7 @@ How to use
 ```js
 
 //Require react-skylight
-var SkyLight = require('react-skylight').SkyLight;
+var SkyLight = require('react-skylight');
 
 var App = React.createClass({
   showDialogWithCallBacks: function(){
@@ -139,3 +139,9 @@ CSS (suggested)
 ```
 
 ##Enjoy!
+
+
+
+## Release History
+
+ * 2015-02-03   v0.1.4   Changed skylight.js to skylight.jsx and adjust of namespace

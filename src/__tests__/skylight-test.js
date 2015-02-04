@@ -1,7 +1,7 @@
 /**
  * Created by Gasparotto on 06/01/15.
  */
-jest.dontMock('../skylight');
+jest.dontMock('../skylight.jsx');
 
 describe('SkyLight', function() {
 
@@ -11,7 +11,7 @@ describe('SkyLight', function() {
 
     beforeEach(function(){
         React = require('react/addons');
-        SkyLight = require('../skylight');
+        SkyLight = require('../skylight.jsx');
         TestUtils = React.addons.TestUtils;
     });
 

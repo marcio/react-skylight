@@ -1,37 +1,6 @@
 var React = require('react');
-
-var overlayStyles = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    zIndex: 99,
-    backgroundColor: 'rgba(0,0,0,0.3)',
-    display: 'block'
-};
-
-var dialogStyles = {
-    width: '50%',
-    height: '400px',
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    marginTop: '-200px',
-    marginLeft: '-25%',
-    backgroundColor: '#fff',
-    borderRadius: '2px',
-    zIndex: 100,
-    padding: '10px',
-    boxShadow: '0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)'
-};
-
-var closeButtonStyle = {
-    cursor: 'pointer',
-    float: 'right',
-    fontSize: '1.6em',
-    margin: '-15px 0'
-};
+var styles = require('./styles');
+var extend = require('util')._extend;
 
 var SkyLight = React.createClass({
     propTypes: {
@@ -42,12 +11,18 @@ var SkyLight = React.createClass({
         beforeClose: React.PropTypes.func,
         afterClose: React.PropTypes.func,
         styleWidth: React.PropTypes.string,
-        styleHeight: React.PropTypes.string
+        styleHeight: React.PropTypes.string,
+        overlayStyles: React.PropTypes.object,
+        dialogStyles: React.PropTypes.object,
+        closeButtonStyle: React.PropTypes.object
     },
     getDefaultProps: function () {
         return {
             title: '',
-            showOverlay: true
+            showOverlay: true,
+            overlayStyles: styles.overlayStyles,
+            dialogStyles: styles.dialogStyles,
+            closeButtonStyle: styles.closeButtonStyle
         }
     },
     getInitialState: function () {
@@ -82,6 +57,10 @@ var SkyLight = React.createClass({
     render: function () {
 
         var overlay;
+
+        var dialogStyles = extend(styles.dialogStyles, this.props.dialogStyles);
+        var overlayStyles = extend(styles.overlayStyles, this.props.overlayStyles);
+        var closeButtonStyle = extend(styles.closeButtonStyle = this.props.closeButtonStyle);
 
         if (this.state.isVisible) {
             overlayStyles.display = 'block';

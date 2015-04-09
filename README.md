@@ -106,12 +106,12 @@ A callback functions to execute before and after open and before and after close
 
 Overlay, dialog and closeButton styles now accept an object that represent your styles.
 
-If you not declare any style, skyLight will apply the default styles, but if you send an object with one or more properties your object will override the default property.
+If you not declare any style, skyLight will apply the default styles, but if you send an object with one or more properties, your object will override the default property.
 
 ####overlayStyles: (Object)
 An object that represent the styles of overlay:
 ```js
-//Default overlay styles:
+//Default overlay SkyLight styles:
 overlayStyles: {
     position: 'fixed',
     top: 0,
@@ -126,7 +126,7 @@ overlayStyles: {
 ####dialogStyles: (Object)
 An object that represent the styles of dialog.
 ```js
-//Default dialog styles:
+//Default dialog SkyLight styles:
 dialogStyles: {
     width: '50%',
     height: '400px',
@@ -146,7 +146,7 @@ dialogStyles: {
 ####closeButtonStyle: (Object)
 An object that represent the styles of close button
 ```js
-//Default close button styles:
+//Default close button SkyLight styles:
 closeButtonStyle: {
     cursor: 'pointer',
     float: 'right',
@@ -155,7 +155,7 @@ closeButtonStyle: {
 }
 ```
 
-### An Example with new styles, overriding backgroud of dialog to red
+### An Example with new styles, overriding dialog background color to red
 
 
 ```js

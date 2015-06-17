@@ -35,20 +35,20 @@ var SkyLight = React.createClass({
         this.setState({isVisible: false});
     },
     componentWillUpdate: function (nextProps, nextState) {
-        if (nextState.isVisible && this.props.beforeOpen) {
+        if (nextState.isVisible && !this.state.isVisible && this.props.beforeOpen) {
             this.props.beforeOpen();
         }
 
-        if (!nextState.isVisible && this.props.beforeClose) {
+        if (!nextState.isVisible && this.state.isVisible && this.props.beforeClose) {
             this.props.beforeClose();
         }
     },
     componentDidUpdate: function (prevProps, prevState) {
-        if (!prevState.isVisible && this.props.afterOpen) {
+        if (!prevState.isVisible && this.state.isVisible && this.props.afterOpen) {
             this.props.afterOpen();
         }
 
-        if (prevState.isVisible && this.props.afterClose) {
+        if (prevState.isVisible && !this.state.isVisible && this.props.afterClose) {
             this.props.afterClose();
         }
     },

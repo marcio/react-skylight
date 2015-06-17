@@ -58,7 +58,7 @@ var SkyLight = React.createClass({
 
         var dialogStyles = extend(styles.dialogStyles, this.props.dialogStyles);
         var overlayStyles = extend(styles.overlayStyles, this.props.overlayStyles);
-        var closeButtonStyle = extend(styles.closeButtonStyle = this.props.closeButtonStyle);
+        var closeButtonStyle = extend(styles.closeButtonStyle, this.props.closeButtonStyle);
 
         if (this.state.isVisible) {
             overlayStyles.display = 'block';

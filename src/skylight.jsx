@@ -69,19 +69,34 @@ var SkyLight = React.createClass({
     }
 
     if (this.props.showOverlay) {
-      overlay = (<div className="skylight-overlay" onClick={this.hide} style={overlayStyles}></div>);
+      if (this.props.fullscreen) {
+        overlay = (<div className="skylight-overlay skylight-overlay-fullscreen" onClick={this.hide} style={overlayStyles}></div>);
+      } else {
+        overlay = (<div className="skylight-overlay" onClick={this.hide} style={overlayStyles}></div>);
+      }
     }
 
-    return (
-      <section className="skylight-wrapper">
-        {overlay}
-        <div style={dialogStyles}>
-          <a role="button" style={closeButtonStyle} onClick={this.hide}>&times;</a>
-          <h2>{this.props.title}</h2>
-          {this.props.children}
-        </div>
-      </section>
-    )
+    if (this.props.fullscreen) {
+      return (
+        <section className="skylight-wrapper skylight-wrapper-fullscreen">
+          {overlay}
+          <div style={dialogStyles} className="skylight-dialog skylight-dialog-fullscreen">
+            <a className="skylight-close skylight-close-fullscreen" role="button" style={closeButtonStyle} onClick={this.hide}>&times;</a>
+            {this.props.children}
+          </div>
+        </section>
+      )
+    } else {
+      return (
+        <section className="skylight-wrapper">
+          {overlay}
+          <div style={dialogStyles} className="skylight-dialog">
+            <a className="skylight-close" role="button" style={closeButtonStyle} onClick={this.hide}>&times;</a>
+            {this.props.children}
+          </div>
+        </section>
+      )
+    }
   }
 });
 

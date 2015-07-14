@@ -62,9 +62,11 @@ var SkyLight = React.createClass({
 
     if (this.state.isVisible) {
       overlayStyles.display = 'block';
+      overlayStyles.opacity = 1;
       dialogStyles.display = 'block';
     } else {
       overlayStyles.display = 'none';
+      overlayStyles.opacity = 0;
       dialogStyles.display = 'none';
     }
 

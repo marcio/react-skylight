@@ -2,5 +2,6 @@
 module.exports = {
     overlayStyles: {},
     dialogStyles: {},
-    closeButtonStyle: {}
+    closeButtonStyle: {},
+    wrapperStyles: {}
 };

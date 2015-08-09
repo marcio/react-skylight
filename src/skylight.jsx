@@ -12,7 +12,8 @@ var SkyLight = React.createClass({
         afterClose: React.PropTypes.func,
         overlayStyles: React.PropTypes.object,
         dialogStyles: React.PropTypes.object,
-        closeButtonStyle: React.PropTypes.object
+        closeButtonStyle: React.PropTypes.object,
+        onOverlayClick: React.PropTypes.func
     },
     getDefaultProps: function () {
         return {
@@ -33,6 +34,9 @@ var SkyLight = React.createClass({
     },
     hide: function () {
         this.setState({isVisible: false});
+    },
+    onOverlayClick: function() {
+        this.props.onOverlayClick ? this.props.onOverlayClick() : this.hide();
     },
     componentWillUpdate: function (nextProps, nextState) {
         if (nextState.isVisible && !this.state.isVisible && this.props.beforeOpen) {
@@ -69,18 +73,18 @@ var SkyLight = React.createClass({
         }
 
         if (this.props.showOverlay) {
-            overlay = (<div style={overlayStyles}></div>);
+            overlay = (<div onClick={ this.onOverlayClick } style={overlayStyles}></div>);
         }
 
         return (
-            <section className="skylight-wrapper">
-                {overlay}
-                <div style={dialogStyles}>
-                    <a role="button" style={closeButtonStyle} onClick={this.hide}>&times;</a>
-                    <h2>{this.props.title}</h2>
-                    {this.props.children}
-                </div>
-            </section>
+          <section className="skylight-wrapper">
+              {overlay}
+              <div style={dialogStyles}>
+                  <a role="button" style={closeButtonStyle} onClick={this.hide}>&times;</a>
+                  <h2>{this.props.title}</h2>
+                  {this.props.children}
+              </div>
+          </section>
         )
     }
 });

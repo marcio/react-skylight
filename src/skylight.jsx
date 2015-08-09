@@ -77,14 +77,14 @@ var SkyLight = React.createClass({
         }
 
         return (
-          <section className="skylight-wrapper">
-              {overlay}
-              <div style={dialogStyles}>
-                  <a role="button" style={closeButtonStyle} onClick={this.hide}>&times;</a>
-                  <h2>{this.props.title}</h2>
-                  {this.props.children}
-              </div>
-          </section>
+            <section className="skylight-wrapper">
+                {overlay}
+                <div style={dialogStyles}>
+                    <a role="button" style={closeButtonStyle} onClick={this.hide}>&times;</a>
+                    <h2>{this.props.title}</h2>
+                    {this.props.children}
+                </div>
+            </section>
         )
     }
 });

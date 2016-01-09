@@ -39,6 +39,9 @@ class SkyLight extends React.Component {
   onOverlayClicked() {
     if(this.props.hideOnOverlayClicked) {
       this.hide();
+      if(this.props.onOverlayClicked) {
+        this.props.onOverlayClicked();
+      }
     }
 
     if(this.props.onOverlayClicked) {
@@ -49,9 +52,10 @@ class SkyLight extends React.Component {
   render() {
     var overlay;
 
-    var dialogStyles = Object.assign(styles.dialogStyles, this.props.dialogStyles);
-    var overlayStyles = Object.assign(styles.overlayStyles, this.props.overlayStyles);
-    var closeButtonStyle = Object.assign(styles.closeButtonStyle, this.props.closeButtonStyle);
+    var dialogStyles = Object.assign({}, styles.dialogStyles, this.props.dialogStyles);
+    var overlayStyles = Object.assign({}, styles.overlayStyles, this.props.overlayStyles);
+    var closeButtonStyle = Object.assign({}, styles.closeButtonStyle, this.props.closeButtonStyle);
+    var titleStyle = Object.assign({}, styles.title, this.props.titleStyle);
 
     if (this.state.isVisible) {
         overlayStyles.display = 'block';
@@ -69,9 +73,9 @@ class SkyLight extends React.Component {
         <section className="skylight-wrapper">
             {overlay}
             <div style={dialogStyles}>
-                <a onClick={() => this.hide()} role="button" style={closeButtonStyle} >&times;</a>
-                <h2>{this.props.title}</h2>
-                {this.props.children}
+              <a onClick={() => this.hide()} role="button" style={closeButtonStyle} >&times;</a>
+              <h2 style={titleStyle}>{this.props.title}</h2>
+              {this.props.children}
             </div>
         </section>
     )
@@ -91,7 +95,8 @@ SkyLight.propTypes = {
   onOverlayClicked: React.PropTypes.func,
   overlayStyles: React.PropTypes.object,
   showOverlay: React.PropTypes.bool,
-  title: React.PropTypes.string
+  title: React.PropTypes.string,
+  titleStyle: React.PropTypes.object
 };
 
 SkyLight.defaultProps = {

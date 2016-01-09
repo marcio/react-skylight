@@ -89,12 +89,14 @@ body {
   margin:0 5px;
 }
 
-a {
+.container a,
+.code-love a {
   color: #fff;
   text-decoration: none;
 }
 
-a:hover {
+.code-love a:hover,
+.container a:hover {
   color: #2ecc71;
 }
 

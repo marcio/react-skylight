@@ -19665,6 +19665,8 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
@@ -19673,20 +19675,768 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactSkylight = __webpack_require__(160);
+
+	var _reactSkylight2 = _interopRequireDefault(_reactSkylight);
+
+	var _reactPrism = __webpack_require__(162);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var MainComponent = function MainComponent() {
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'Component'
-	  );
-	};
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MainComponent = function (_React$Component) {
+	  _inherits(MainComponent, _React$Component);
+
+	  function MainComponent(props) {
+	    _classCallCheck(this, MainComponent);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MainComponent).call(this, props));
+	  }
+
+	  _createClass(MainComponent, [{
+	    key: '_executeBeforeFirstModalOpen',
+	    value: function _executeBeforeFirstModalOpen() {
+	      alert('Executed before open');
+	    }
+	  }, {
+	    key: '_executeAfterFirstModalOpen',
+	    value: function _executeAfterFirstModalOpen() {
+	      alert('Executed after open');
+	    }
+	  }, {
+	    key: '_executeBeforeFirstModalClose',
+	    value: function _executeBeforeFirstModalClose() {
+	      alert('Executed before close');
+	    }
+	  }, {
+	    key: '_executeAfterFirstModalClose',
+	    value: function _executeAfterFirstModalClose() {
+	      alert('Executed after close');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var myGreenDialog = {
+	        backgroundColor: '#00897B',
+	        color: '#ffffff',
+	        width: '70%',
+	        height: '600px',
+	        marginTop: '-300px',
+	        marginLeft: '-35%'
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'container bg-blue' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'React SkyLight'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-1-3' },
+	              _react2.default.createElement(
+	                'p',
+	                { className: ' font-large' },
+	                'React SkyLight is a simple react component for modals and dialogs. Powerful, lightweight and customizable design.'
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'btn', onClick: function onClick() {
+	                    return _this2.refs.simpleDialog.show();
+	                  } },
+	                'Open Modal'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'code-love' },
+	                _react2.default.createElement('i', { className: 'fa fa-code' }),
+	                ' with ',
+	                _react2.default.createElement('i', { className: 'fa fa-heart' }),
+	                ' by   ',
+	                _react2.default.createElement(
+	                  'a',
+	                  { href: 'https://github.com/marcio' },
+	                  'Marcio Gasparotto'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                _react2.default.createElement('iframe', {
+	                  frameBorder: '0',
+	                  height: '20px',
+	                  scrolling: '0',
+	                  src: 'https://ghbtns.com/github-btn.html?user=marcio&repo=react-skylight&type=star&count=true', width: '100px' }),
+	                _react2.default.createElement('iframe', {
+	                  frameBorder: '0',
+	                  height: '20px',
+	                  scrolling: '0',
+	                  src: 'https://ghbtns.com/github-btn.html?user=marcio&repo=react-skylight&type=fork&count=true', width: '100px' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-2-3' },
+	              _react2.default.createElement(
+	                'pre',
+	                { className: 'line-numbers', 'data-start': '1' },
+	                _react2.default.createElement(
+	                  _reactPrism.PrismCode,
+	                  { className: 'language-jsx' },
+	                  __webpack_require__(166)
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'container bg-blue' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Install'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-full' },
+	              _react2.default.createElement(
+	                'pre',
+	                { className: 'command-line', 'data-host': 'local', 'data-user': 'marcio' },
+	                _react2.default.createElement(
+	                  _reactPrism.PrismCode,
+	                  { className: 'language-bash' },
+	                  __webpack_require__(167)
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'container bg-green' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Dialog with callbacks'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-2-3' },
+	              _react2.default.createElement(
+	                'pre',
+	                { className: 'line-numbers', 'data-start': '1' },
+	                _react2.default.createElement(
+	                  _reactPrism.PrismCode,
+	                  { className: 'language-jsx' },
+	                  __webpack_require__(168)
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-1-3' },
+	              _react2.default.createElement(
+	                'p',
+	                { className: ' font-large' },
+	                'React SkyLight accepts 4 callbacks: beforeOpen, afterOpen, beforeClose and afterClose.'
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'btn warn', onClick: function onClick() {
+	                    return _this2.refs.dialogWithCallBacks.show();
+	                  } },
+	                'Open Modal'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'container bg-yellow' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Custom Styles'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-1-3' },
+	              _react2.default.createElement(
+	                'p',
+	                { className: ' font-large' },
+	                'Easy to overwrite default styles.'
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'btn warn', onClick: function onClick() {
+	                    return _this2.refs.customDialog.show();
+	                  } },
+	                'Open Modal'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-2-3' },
+	              _react2.default.createElement(
+	                'pre',
+	                { className: 'line-numbers', 'data-start': '1' },
+	                _react2.default.createElement(
+	                  _reactPrism.PrismCode,
+	                  { className: 'language-jsx' },
+	                  __webpack_require__(169)
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'container bg-blue-2' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Default Styles'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-2-3' },
+	              _react2.default.createElement(
+	                'pre',
+	                { className: 'line-numbers', 'data-start': '1' },
+	                _react2.default.createElement(
+	                  _reactPrism.PrismCode,
+	                  { className: 'language-jsx' },
+	                  __webpack_require__(170)
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-1-3' },
+	              _react2.default.createElement(
+	                'p',
+	                { className: ' font-large' },
+	                'All styles can be overridden!'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'container bg-red' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Options'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-1-3' },
+	              _react2.default.createElement(
+	                'p',
+	                { className: ' font-large' },
+	                'See a list of propTypes.'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'column-2-3' },
+	              _react2.default.createElement(
+	                'pre',
+	                { className: 'line-numbers', 'data-start': '1' },
+	                _react2.default.createElement(
+	                  _reactPrism.PrismCode,
+	                  { className: 'language-js' },
+	                  __webpack_require__(171)
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'container bg-blue' },
+	          _react2.default.createElement('i', { className: 'fa fa-code' }),
+	          ' with ',
+	          _react2.default.createElement('i', { className: 'fa fa-heart' }),
+	          ' by   ',
+	          _react2.default.createElement(
+	            'a',
+	            { href: 'https://github.com/marcio' },
+	            'Marcio Gasparotto'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactSkylight2.default,
+	          {
+	            afterClose: this._executeAfterFirstModalClose,
+	            afterOpen: this._executeAfterFirstModalOpen,
+	            beforeClose: this._executeBeforeFirstModalClose,
+	            beforeOpen: this._executeBeforeFirstModalOpen,
+	            ref: 'dialogWithCallBacks',
+	            title: 'Hello!, I\'m a modal with callbacks!' },
+	          'I have callbacks!'
+	        ),
+	        _react2.default.createElement(
+	          _reactSkylight2.default,
+	          { hideOnOverlayClicked: true, ref: 'simpleDialog', title: 'Hi, I\'m a simple modal' },
+	          'Hello, I dont have any callback.'
+	        ),
+	        _react2.default.createElement(
+	          _reactSkylight2.default,
+	          { dialogStyles: myGreenDialog, hideOnOverlayClicked: true, ref: 'customDialog', title: 'A Custom Modal' },
+	          'I\'m a custom modal!'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return MainComponent;
+	}(_react2.default.Component);
 
 	MainComponent.displayName = 'MainComponent';
 
 	exports.default = MainComponent;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _styles = __webpack_require__(161);
+
+	var _styles2 = _interopRequireDefault(_styles);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SkyLight = (function (_React$Component) {
+	    _inherits(SkyLight, _React$Component);
+
+	    function SkyLight(props) {
+	        _classCallCheck(this, SkyLight);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SkyLight).call(this, props));
+
+	        _this.state = { isVisible: false };
+	        return _this;
+	    }
+
+	    _createClass(SkyLight, [{
+	        key: 'componentWillUpdate',
+	        value: function componentWillUpdate(nextProps, nextState) {
+	            if (nextState.isVisible && !this.state.isVisible && this.props.beforeOpen) {
+	                this.props.beforeOpen();
+	            }
+
+	            if (!nextState.isVisible && this.state.isVisible && this.props.beforeClose) {
+	                this.props.beforeClose();
+	            }
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate(prevProps, prevState) {
+	            if (!prevState.isVisible && this.state.isVisible && this.props.afterOpen) {
+	                this.props.afterOpen();
+	            }
+
+	            if (prevState.isVisible && !this.state.isVisible && this.props.afterClose) {
+	                this.props.afterClose();
+	            }
+	        }
+	    }, {
+	        key: 'show',
+	        value: function show() {
+	            this.setState({ isVisible: true });
+	        }
+	    }, {
+	        key: 'hide',
+	        value: function hide() {
+	            this.setState({ isVisible: false });
+	        }
+	    }, {
+	        key: 'onOverlayClicked',
+	        value: function onOverlayClicked() {
+	            if (this.props.hideOnOverlayClicked) {
+	                this.hide();
+	                if (this.props.onOverlayClicked) {
+	                    this.props.onOverlayClicked();
+	                }
+	            }
+
+	            if (this.props.onOverlayClicked) {
+	                this.props.onOverlayClicked();
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            var overlay;
+
+	            var dialogStyles = Object.assign({}, _styles2.default.dialogStyles, this.props.dialogStyles);
+	            var overlayStyles = Object.assign({}, _styles2.default.overlayStyles, this.props.overlayStyles);
+	            var closeButtonStyle = Object.assign({}, _styles2.default.closeButtonStyle, this.props.closeButtonStyle);
+	            var titleStyle = Object.assign({}, _styles2.default.title, this.props.titleStyle);
+
+	            if (this.state.isVisible) {
+	                overlayStyles.display = 'block';
+	                dialogStyles.display = 'block';
+	            } else {
+	                overlayStyles.display = 'none';
+	                dialogStyles.display = 'none';
+	            }
+
+	            if (this.props.showOverlay) {
+	                overlay = _react2.default.createElement('div', { onClick: function onClick() {
+	                        return _this2.onOverlayClicked();
+	                    }, style: overlayStyles });
+	            }
+
+	            return _react2.default.createElement(
+	                'section',
+	                { className: 'skylight-wrapper' },
+	                overlay,
+	                _react2.default.createElement(
+	                    'div',
+	                    { style: dialogStyles },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { onClick: function onClick() {
+	                                return _this2.hide();
+	                            }, role: 'button', style: closeButtonStyle },
+	                        '×'
+	                    ),
+	                    _react2.default.createElement(
+	                        'h2',
+	                        { style: titleStyle },
+	                        this.props.title
+	                    ),
+	                    this.props.children
+	                )
+	            );
+	        }
+	    }]);
+
+	    return SkyLight;
+	})(_react2.default.Component);
+
+	SkyLight.displayName = 'SkyLight';
+
+	SkyLight.propTypes = {
+	    afterClose: _react2.default.PropTypes.func,
+	    afterOpen: _react2.default.PropTypes.func,
+	    beforeClose: _react2.default.PropTypes.func,
+	    beforeOpen: _react2.default.PropTypes.func,
+	    closeButtonStyle: _react2.default.PropTypes.object,
+	    dialogStyles: _react2.default.PropTypes.object,
+	    hideOnOverlayClicked: _react2.default.PropTypes.bool,
+	    onOverlayClicked: _react2.default.PropTypes.func,
+	    overlayStyles: _react2.default.PropTypes.object,
+	    showOverlay: _react2.default.PropTypes.bool,
+	    title: _react2.default.PropTypes.string,
+	    titleStyle: _react2.default.PropTypes.object
+	};
+
+	SkyLight.defaultProps = {
+	    title: '',
+	    showOverlay: true,
+	    overlayStyles: _styles2.default.overlayStyles,
+	    dialogStyles: _styles2.default.dialogStyles,
+	    closeButtonStyle: _styles2.default.closeButtonStyle,
+	    hideOnOverlayClicked: false
+	};
+
+	exports.default = SkyLight;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var styles = {
+	  overlayStyles: {
+	    position: 'fixed',
+	    top: 0,
+	    left: 0,
+	    width: '100%',
+	    height: '100%',
+	    zIndex: 99,
+	    backgroundColor: 'rgba(0,0,0,0.3)'
+	  },
+	  dialogStyles: {
+	    width: '50%',
+	    height: '400px',
+	    position: 'fixed',
+	    top: '50%',
+	    left: '50%',
+	    marginTop: '-200px',
+	    marginLeft: '-25%',
+	    backgroundColor: '#fff',
+	    borderRadius: '2px',
+	    zIndex: 100,
+	    padding: '15px',
+	    boxShadow: '0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)'
+	  },
+	  title: {
+	    marginTop: '0'
+	  },
+	  closeButtonStyle: {
+	    cursor: 'pointer',
+	    position: 'absolute',
+	    fontSize: '1.8em',
+	    right: '10px',
+	    top: '0'
+	  }
+	};
+
+	exports.default = styles;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _interopRequire(obj) { return obj && obj.__esModule ? obj["default"] : obj; }
+
+	var _PrismCode = __webpack_require__(163);
+
+	exports.PrismCode = _interopRequire(_PrismCode);
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactPureRenderFunction = __webpack_require__(164);
+
+	var _reactPureRenderFunction2 = _interopRequireDefault(_reactPureRenderFunction);
+
+	/* global Prism */
+
+	var PrismCode = (function (_Component) {
+	  _inherits(PrismCode, _Component);
+
+	  function PrismCode() {
+	    _classCallCheck(this, PrismCode);
+
+	    _get(Object.getPrototypeOf(PrismCode.prototype), "constructor", this).apply(this, arguments);
+
+	    this.shouldComponentUpdate = _reactPureRenderFunction2["default"];
+	  }
+
+	  _createClass(PrismCode, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this._hightlight();
+	    }
+	  }, {
+	    key: "componentDidUpdate",
+	    value: function componentDidUpdate() {
+	      this._hightlight();
+	    }
+	  }, {
+	    key: "_hightlight",
+	    value: function _hightlight() {
+	      Prism.highlightElement(this.refs.code, this.props.async);
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2["default"].createElement(
+	        "code",
+	        {
+	          ref: "code",
+	          className: this.props.className
+	        },
+	        this.props.children
+	      );
+	    }
+	  }], [{
+	    key: "propTypes",
+	    value: {
+	      async: _react.PropTypes.bool
+	    },
+	    enumerable: true
+	  }]);
+
+	  return PrismCode;
+	})(_react.Component);
+
+	exports["default"] = PrismCode;
+	module.exports = exports["default"];
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = shouldPureComponentUpdate;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _shallowEqual = __webpack_require__(165);
+
+	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
+
+	function shouldPureComponentUpdate(nextProps, nextState) {
+	  return !(0, _shallowEqual2['default'])(this.props, nextProps) || !(0, _shallowEqual2['default'])(this.state, nextState);
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 165 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = shallowEqual;
+
+	function shallowEqual(objA, objB) {
+	  if (objA === objB) {
+	    return true;
+	  }
+
+	  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+	    return false;
+	  }
+
+	  var keysA = Object.keys(objA);
+	  var keysB = Object.keys(objB);
+
+	  if (keysA.length !== keysB.length) {
+	    return false;
+	  }
+
+	  // Test for A's keys different from B.
+	  var bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+	  for (var i = 0; i < keysA.length; i++) {
+	    if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
+	      return false;
+	    }
+	  }
+
+	  return true;
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 166 */
+/***/ function(module, exports) {
+
+	module.exports = "import React from 'react';\nimport SkyLight from 'react-skylight';\n\nclass Example extends React.Component {\n  constructor(props){\n    super(props);\n  }\n\n  render() {\n\n    return (\n      <div>\n        <section>\n          <h1>React SkyLight</h1>\n          <button onClick={() => this.refs.simpleDialog.show()}>Open Modal</button>\n        </section>\n        <SkyLight ref=\"simpleDialog\" title=\"Hi, I'm a simple modal\">\n          Hello, I dont have any callback.\n        </SkyLight>\n      </div>\n    )\n  }\n}\n\nExample.displayName = 'Example';\n\nexport default Example;\n"
+
+/***/ },
+/* 167 */
+/***/ function(module, exports) {
+
+	module.exports = "\nnpm install --save react-skylight\n"
+
+/***/ },
+/* 168 */
+/***/ function(module, exports) {
+
+	module.exports = "import React from 'react';\nimport SkyLight from 'react-skylight';\n\nclass ExampleCallBack extends React.Component {\n  constructor(props){\n    super(props);\n  }\n\n  _executeBeforeModalOpen(){\n    alert('Executed before open');\n  }\n\n  _executeAfterModalOpen(){\n    alert('Executed after open');\n  }\n\n  _executeBeforeModalClose(){\n    alert('Executed before close');\n  }\n\n  _executeAfterModalClose(){\n    alert('Executed after close');\n  }\n\n  render() {\n\n    return (\n      <div>\n        <section>\n          <h1>React SkyLight</h1>\n          <button onClick={() => this.refs.dialogWithCallBacks.show()}>Open Modal</button>\n        </section>\n        <SkyLight\n          afterClose={this._executeAfterModalClose}\n          afterOpen={this._executeAfterModalOpen}\n          beforeClose={this._executeBeforeModalClose}\n          beforeOpen={this._executeBeforeModalOpen}\n          ref=\"dialogWithCallBacks\"\n          title=\"Hello!, I'm a modal with callbacks!\">\n            I have callbacks!\n        </SkyLight>\n      </div>\n    )\n  }\n}\n\nExampleCallBack.displayName = 'ExampleCallBack';\n\nexport default ExampleCallBack;\n"
+
+/***/ },
+/* 169 */
+/***/ function(module, exports) {
+
+	module.exports = "import React from 'react';\nimport SkyLight from 'react-skylight';\n\nclass ExampleCustom extends React.Component {\n  constructor(props){\n    super(props);\n  }\n\n  render() {\n\n    var myBigGreenDialog = {\n      backgroundColor: '#00897B',\n      color: '#ffffff',\n      width: '70%',\n      height: '600px',\n      marginTop: '-300px',\n      marginLeft: '-35%',\n    };\n\n    return (\n      <div>\n        <section>\n          <h1>React SkyLight</h1>\n          <button onClick={() => this.refs.customDialog.show()}>Open Modal</button>\n        </section>\n        <SkyLight dialogStyles={myBigGreenDialog} hideOnOverlayClicked ref=\"customDialog\" title=\"A Custom Modal\">\n          I'm a custom modal!\n        </SkyLight>\n      </div>\n    )\n  }\n}\n\nExampleCustom.displayName = 'ExampleCustom';\n\nexport default ExampleCustom;\n"
+
+/***/ },
+/* 170 */
+/***/ function(module, exports) {
+
+	module.exports = "const styles = {\n  overlayStyles: {\n    position: 'fixed',\n    top: 0,\n    left: 0,\n    width: '100%',\n    height: '100%',\n    zIndex: 99,\n    backgroundColor: 'rgba(0,0,0,0.3)'\n  },\n  dialogStyles: {\n    width: '50%',\n    height: '400px',\n    position: 'fixed',\n    top: '50%',\n    left: '50%',\n    marginTop: '-200px',\n    marginLeft: '-25%',\n    backgroundColor: '#fff',\n    borderRadius: '2px',\n    zIndex: 100,\n    padding: '15px',\n    boxShadow: '0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)'\n  },\n  title: {\n    marginTop: '0'\n  },\n  closeButtonStyle: {\n    cursor: 'pointer',\n    position: 'absolute',\n    fontSize: '1.8em',\n    right: '10px',\n    top: '0'\n  }\n};\n\nexport default styles;\n"
+
+/***/ },
+/* 171 */
+/***/ function(module, exports) {
+
+	module.exports = "SkyLight.propTypes = {\n  //Callback function to exec after close\n  afterClose: React.PropTypes.func,\n\n  //Callback function to exec after open\n  afterOpen: React.PropTypes.func,\n\n  //Callback function to exec before close\n  beforeClose: React.PropTypes.func,\n\n  //Callback function to exec before open\n  beforeOpen: React.PropTypes.func,\n\n  //Object with close button styles\n  closeButtonStyle: React.PropTypes.object,\n\n  //Object with dialog styles\n  dialogStyles: React.PropTypes.object,\n\n  //Close on click in overlay, default is false\n  hideOnOverlayClicked: React.PropTypes.bool,\n\n  //Callback function to exec on overlay was clicked\n  onOverlayClicked: React.PropTypes.func,\n\n  //Object with overlay styles\n  overlayStyles: React.PropTypes.object,\n\n  //Show overlay, default is true\n  showOverlay: React.PropTypes.bool,\n\n  //Dialog title\n  title: React.PropTypes.string,\n\n  //Object with title styles\n  titleStyle: React.PropTypes.object\n};\n"
 
 /***/ }
 /******/ ]);

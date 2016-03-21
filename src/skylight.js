@@ -70,7 +70,7 @@ class SkyLight extends React.Component {
     }
 
     return (
-        <section className="skylight-wrapper">
+        <section className="skylight-wrapper" id={this.props.id}>
             {overlay}
             <div style={dialogStyles}>
               <a onClick={() => this.hide()} role="button" style={closeButtonStyle} >&times;</a>
@@ -96,7 +96,8 @@ SkyLight.propTypes = {
   overlayStyles: React.PropTypes.object,
   showOverlay: React.PropTypes.bool,
   title: React.PropTypes.string,
-  titleStyle: React.PropTypes.object
+  titleStyle: React.PropTypes.object,
+  id: React.PropTypes.string,
 };
 
 SkyLight.defaultProps = {
@@ -105,7 +106,8 @@ SkyLight.defaultProps = {
   overlayStyles: styles.overlayStyles,
   dialogStyles: styles.dialogStyles,
   closeButtonStyle: styles.closeButtonStyle,
-  hideOnOverlayClicked: false
+  hideOnOverlayClicked: false,
+  id: 'skylight',
 };
 
 export default SkyLight;

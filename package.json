@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel src -d lib",
     "watch": "babel src --watch -d lib",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
@@ -29,8 +30,7 @@
   "peerDependencies": {
     "react": "*"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.3.26",
     "babel-eslint": "^5.0.0-beta6",
@@ -41,6 +41,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.14.0",
     "jest-cli": "^0.2.1",
-    "react": "^0.14.5"
+    "react": "^0.14.5",
+    "webpack": "^1.12.14"
   }
 }

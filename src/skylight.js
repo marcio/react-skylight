@@ -1,111 +1,98 @@
 import React from 'react';
 import styles from './styles';
 
-class SkyLight extends React.Component {
+const isOpening = (p1, p2) => !p1.isVisible && p2.isVisible;
+const isClosing = (p1, p2) => p1.isVisible && !p2.isVisible;
 
+class SkyLight extends React.Component {
   constructor(props){
-    super(props);
-    this.state = { isVisible: false };
+      super(props);
   }
 
   componentWillUpdate(nextProps, nextState) {
-      if (nextState.isVisible && !this.state.isVisible && this.props.beforeOpen) {
+      if (isOpening(this.props, nextProps) && this.props.beforeOpen) {
           this.props.beforeOpen();
       }
 
-      if (!nextState.isVisible && this.state.isVisible && this.props.beforeClose) {
+      if (isClosing(this.props, nextProps) && this.props.beforeClose) {
           this.props.beforeClose();
       }
   }
 
   componentDidUpdate(prevProps, prevState) {
-      if (!prevState.isVisible && this.state.isVisible && this.props.afterOpen) {
+      if (isOpening(prevProps, this.props) && this.props.afterOpen) {
           this.props.afterOpen();
       }
 
-      if (prevState.isVisible && !this.state.isVisible && this.props.afterClose) {
+      if (isClosing(prevProps, this.props) && this.props.afterClose) {
           this.props.afterClose();
       }
   }
 
-  show() {
-      this.setState({isVisible: true});
-  }
-
-  hide() {
-      this.setState({isVisible: false});
-  }
-
   onOverlayClicked() {
-    if(this.props.hideOnOverlayClicked) {
-      this.hide();
-      if(this.props.onOverlayClicked) {
-        this.props.onOverlayClicked();
+      if (this.props.onOverlayClicked) {
+          this.props.onOverlayClicked();
       }
-    }
+  }
 
-    if(this.props.onOverlayClicked) {
-      this.props.onOverlayClicked();
-    }
- }
+  onCloseClicked() {
+      if (this.props.onCloseClicked) {
+          this.props.onCloseClicked();
+      }
+  }
 
   render() {
-    var overlay;
+    const dialogStyles = Object.assign({}, styles.dialogStyles, this.props.dialogStyles);
+    const overlayStyles = Object.assign({}, styles.overlayStyles, this.props.overlayStyles);
+    const closeButtonStyle = Object.assign({}, styles.closeButtonStyle, this.props.closeButtonStyle);
+    const titleStyle = Object.assign({}, styles.title, this.props.titleStyle);
 
-    var dialogStyles = Object.assign({}, styles.dialogStyles, this.props.dialogStyles);
-    var overlayStyles = Object.assign({}, styles.overlayStyles, this.props.overlayStyles);
-    var closeButtonStyle = Object.assign({}, styles.closeButtonStyle, this.props.closeButtonStyle);
-    var titleStyle = Object.assign({}, styles.title, this.props.titleStyle);
+    const displayStyle = this.props.isVisible ? 'block' : 'none';
+    overlayStyles.display = dialogStyles.display = displayStyle;
 
-    if (this.state.isVisible) {
-        overlayStyles.display = 'block';
-        dialogStyles.display = 'block';
-    } else {
-        overlayStyles.display = 'none';
-        dialogStyles.display = 'none';
-    }
-
+    let overlay;
     if (this.props.showOverlay) {
-        overlay = (<div onClick={() => this.onOverlayClicked()} style={overlayStyles}></div>);
+        overlay = (<div className="skylight-overlay" onClick={() => this.onOverlayClicked()} style={overlayStyles}></div>);
     }
 
     return (
         <section className="skylight-wrapper">
             {overlay}
-            <div style={dialogStyles}>
-              <a onClick={() => this.hide()} role="button" style={closeButtonStyle} >&times;</a>
+            <div className="skylight-dialog" style={dialogStyles}>
+              <a onClick={() => this.onCloseClicked()} role="button" style={closeButtonStyle} >&times;</a>
               <h2 style={titleStyle}>{this.props.title}</h2>
               {this.props.children}
             </div>
         </section>
-    )
+    );
   }
 }
 
 SkyLight.displayName = 'SkyLight';
-
 SkyLight.propTypes = {
-  afterClose: React.PropTypes.func,
-  afterOpen: React.PropTypes.func,
-  beforeClose: React.PropTypes.func,
-  beforeOpen: React.PropTypes.func,
-  closeButtonStyle: React.PropTypes.object,
-  dialogStyles: React.PropTypes.object,
-  hideOnOverlayClicked: React.PropTypes.bool,
-  onOverlayClicked: React.PropTypes.func,
-  overlayStyles: React.PropTypes.object,
-  showOverlay: React.PropTypes.bool,
-  title: React.PropTypes.string,
-  titleStyle: React.PropTypes.object
+    afterClose: React.PropTypes.func,
+    afterOpen: React.PropTypes.func,
+    beforeClose: React.PropTypes.func,
+    beforeOpen: React.PropTypes.func,
+    closeButtonStyle: React.PropTypes.object,
+    dialogStyles: React.PropTypes.object,
+    hideOnOverlayClicked: React.PropTypes.bool,
+    isVisible: React.PropTypes.bool,
+    onCloseClicked: React.PropTypes.func,
+    onOverlayClicked: React.PropTypes.func,
+    overlayStyles: React.PropTypes.object,
+    showOverlay: React.PropTypes.bool,
+    title: React.PropTypes.string,
+    titleStyle: React.PropTypes.object
 };
 
 SkyLight.defaultProps = {
-  title: '',
-  showOverlay: true,
-  overlayStyles: styles.overlayStyles,
-  dialogStyles: styles.dialogStyles,
-  closeButtonStyle: styles.closeButtonStyle,
-  hideOnOverlayClicked: false
+    title: '',
+    showOverlay: true,
+    overlayStyles: styles.overlayStyles,
+    dialogStyles: styles.dialogStyles,
+    closeButtonStyle: styles.closeButtonStyle,
+    hideOnOverlayClicked: false
 };
 
 export default SkyLight;

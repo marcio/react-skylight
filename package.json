@@ -2,11 +2,11 @@
   "name": "react-skylight",
   "version": "0.3.0",
   "description": "A react component for modals and dialogs.",
-  "main": "lib/skylight.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
     "watch": "babel src --watch -d lib",
-    "lint": "eslint src",
+    "lint": "eslint 'src/*.{js,jsx}'",
     "test": "npm run lint && npm run build"
   },
   "repository": {
@@ -33,15 +33,32 @@
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.3.26",
-    "babel-eslint": "^5.0.0-beta6",
+    "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
+    "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.3.13",
-    "eslint": "^1.10.3",
-    "eslint-plugin-react": "^3.14.0",
-    "jest-cli": "^0.2.1",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
+    "jest-cli": "^0.10.0",
     "react": "^0.14.5",
     "webpack": "^1.12.14"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": []
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+      }
+    }
   }
 }

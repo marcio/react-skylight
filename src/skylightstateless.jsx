@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles';
 
-class SkyLightStateless extends React.Component {
+export default class SkyLightStateless extends React.Component {
 
   onOverlayClicked() {
     if (this.props.onOverlayClicked) {
@@ -17,12 +17,12 @@ class SkyLightStateless extends React.Component {
 
   render() {
     const mergeStyles = key => Object.assign({}, styles[key], this.props[key]);
+    const { isVisible } = this.props;
     const dialogStyles = mergeStyles('dialogStyles');
     const overlayStyles = mergeStyles('overlayStyles');
     const closeButtonStyle = mergeStyles('closeButtonStyle');
     const titleStyle = mergeStyles('titleStyle');
-    const displayStyle = this.props.isVisible ? 'block' : 'none';
-    overlayStyles.display = dialogStyles.display = displayStyle;
+    overlayStyles.display = dialogStyles.display = 'block';
 
     let overlay;
     if (this.props.showOverlay) {
@@ -34,7 +34,7 @@ class SkyLightStateless extends React.Component {
       );
     }
 
-    return (
+    return isVisible ? (
         <section className="skylight-wrapper">
             {overlay}
             <div className="skylight-dialog" style={dialogStyles}>
@@ -48,7 +48,7 @@ class SkyLightStateless extends React.Component {
               {this.props.children}
             </div>
         </section>
-    );
+    ) : <div />;
   }
 }
 
@@ -77,5 +77,3 @@ SkyLightStateless.defaultProps = {
   dialogStyles: styles.dialogStyles,
   closeButtonStyle: styles.closeButtonStyle,
 };
-
-export default SkyLightStateless;

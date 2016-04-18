@@ -23,14 +23,14 @@ const styles = {
     boxShadow: '0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)',
   },
   title: {
-    marginTop: '0',
+    marginTop: 0,
   },
   closeButtonStyle: {
     cursor: 'pointer',
     position: 'absolute',
     fontSize: '1.8em',
     right: '10px',
-    top: '0',
+    top: 0,
   },
 };
 

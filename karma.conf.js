@@ -7,6 +7,7 @@ module.exports = config => {
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
+      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
       { pattern: 'src/*.(jsx|js)', included: false },
       { pattern: 'src/*.js', included: false },
       'test/**/*.spec.jsx'

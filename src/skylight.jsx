@@ -4,7 +4,7 @@ import SkylightStateless from './skylightstateless';
 const isOpening = (s1, s2) => !s1.isVisible && s2.isVisible;
 const isClosing = (s1, s2) => s1.isVisible && !s2.isVisible;
 
-class SkyLight extends React.Component {
+export default class SkyLight extends React.Component {
 
   constructor(props) {
     super(props);
@@ -74,5 +74,3 @@ SkyLight.defaultProps = {
   ...SkylightStateless.defaultProps,
   hideOnOverlayClicked: false,
 };
-
-export default SkyLight;

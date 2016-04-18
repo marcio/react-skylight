@@ -8,7 +8,8 @@
     "watch": "babel src --watch -d lib",
     "lint": "eslint 'src/*.{js,jsx}'",
     "develop": "karma start --tdd",
-    "test": "npm run lint && karma start && npm run build"
+    "karma": "karma start",
+    "test": "npm-run-all lint karma build"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
+    "npm-run-all": "^1.7.0",
     "phantomjs-polyfill-object-assign": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "react": "^15.0.1",

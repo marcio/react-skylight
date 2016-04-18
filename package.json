@@ -6,10 +6,9 @@
   "scripts": {
     "build": "babel src -d lib",
     "watch": "babel src --watch -d lib",
-    "lint": "eslint 'src/*.{js,jsx}'",
     "develop": "karma start --tdd",
     "karma": "karma start",
-    "test": "npm-run-all lint karma build"
+    "test": "npm-run-all karma build"
   },
   "repository": {
     "type": "git",
@@ -28,6 +27,10 @@
     "dialog"
   ],
   "author": "Marcio Gasparotto",
+  "contributors": [{
+    "name": "Chris Trevino",
+    "email": "darthtrevino@gmail.com"
+  }],
   "license": "MIT",
   "peerDependencies": {
     "react": "*"
@@ -43,8 +46,9 @@
     "chai": "^3.5.0",
     "eslint": "^2.7.0",
     "eslint-config-airbnb": "^6.2.0",
+    "eslint-loader": "^1.3.0",
     "eslint-plugin-react": "^4.3.0",
-    "istanbul-instrumenter-loader": "^0.2.0",
+    "isparta-loader": "^2.0.0",
     "jest-cli": "^0.10.0",
     "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
@@ -69,13 +73,5 @@
       "stage-0"
     ],
     "plugins": []
-  },
-  "eslintConfig": {
-    "extends": "airbnb",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "experimentalObjectRestSpread": true
-      }
-    }
   }
 }

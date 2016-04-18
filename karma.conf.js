@@ -20,12 +20,17 @@ module.exports = config => {
         extensions: ['', '.js', '.jsx'],
       },
       module: {
-        postLoaders: [
-            {
-                test: /\.(js|jsx)$/,
-                include: path.resolve('src/'),
-                loader: 'istanbul-instrumenter'
-            }
+        preLoaders: [
+          {
+              test: /\.(js|jsx)$/,
+              include: path.resolve('src/'),
+              loader: 'isparta'
+          },
+          {
+            test: /\.(js|jsx)?$/,
+            loader: 'eslint',
+            exclude: /node_modules/,
+          },
         ],
         loaders: [
           {

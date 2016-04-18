@@ -8,7 +8,6 @@ module.exports = config => {
     frameworks: ['mocha', 'chai'],
     files: [
       './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
-      { pattern: 'lib/**/*', included: false },
       'test/**/*.spec.jsx',
     ],
     exclude: [],

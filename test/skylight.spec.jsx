@@ -2,34 +2,26 @@
 /* eslint-disable no-return-assign */
 import React from 'react';
 import { expect } from 'chai';
-import {
-  renderIntoDocument,
-  scryRenderedDOMComponentsWithClass,
-  findRenderedDOMComponentWithClass,
-  Simulate,
-} from 'react-addons-test-utils';
 import Skylight from '../src/skylight';
+import SkylightInteractor from './SkylightInteractor';
 
 describe('The Skylight component', () => {
   it('will not render initially', () => {
-    const rendered = renderIntoDocument(<Skylight />);
-    const found = scryRenderedDOMComponentsWithClass(rendered, 'skylight-wrapper');
-    expect(found.length).to.equal(0);
+    const rendered = new SkylightInteractor(<Skylight />);
+    expect(rendered.isOpen()).to.be.false;
   });
 
   it('will render on show()', () => {
-    const rendered = renderIntoDocument(<Skylight />);
+    const rendered = new SkylightInteractor(<Skylight />);
     rendered.show();
-    const found = scryRenderedDOMComponentsWithClass(rendered, 'skylight-wrapper');
-    expect(found.length).to.equal(1);
+    expect(rendered.isOpen()).to.be.true;
   });
 
   it('will hide on hide()', () => {
-    const rendered = renderIntoDocument(<Skylight />);
+    const rendered = new SkylightInteractor(<Skylight />);
     rendered.show();
     rendered.hide();
-    const found = scryRenderedDOMComponentsWithClass(rendered, 'skylight-wrapper');
-    expect(found.length).to.equal(0);
+    expect(rendered.isOpen()).to.be.false;
   });
 
   it('will emit beforeOpen and afterOpen events when opening', () => {
@@ -40,7 +32,7 @@ describe('The Skylight component', () => {
       expect(beforeTriggered).to.be.true;
       afterTriggered = true;
     };
-    const rendered = renderIntoDocument(
+    const rendered = new SkylightInteractor(
       <Skylight beforeOpen={onBefore} afterOpen={onAfter} />
     );
     expect(beforeTriggered).to.be.false;
@@ -58,7 +50,7 @@ describe('The Skylight component', () => {
       expect(beforeTriggered).to.be.true;
       afterTriggered = true;
     };
-    const rendered = renderIntoDocument(
+    const rendered = new SkylightInteractor(
       <Skylight beforeClose={onBefore} afterClose={onAfter} />
     );
     rendered.show();
@@ -71,42 +63,28 @@ describe('The Skylight component', () => {
 
   it('will emit an onOverlayClicked event', () => {
     let clicked = false;
-    const rendered = renderIntoDocument(
+    const rendered = new SkylightInteractor(
       <Skylight onOverlayClicked={() => clicked = true} />
     );
     rendered.show();
-    const overlay = findRenderedDOMComponentWithClass(rendered, 'skylight-overlay');
-    Simulate.click(overlay);
+    rendered.clickOnOverlay();
     expect(clicked).to.be.true;
-
-    // Still open
-    const found = scryRenderedDOMComponentsWithClass(rendered, 'skylight-wrapper');
-    expect(found.length).to.equal(1);
+    expect(rendered.isOpen()).to.be.true;
   });
 
   it('will close when the overlay is clicked when hideOnOverlayClicked prop is true', () => {
-    const rendered = renderIntoDocument(
+    const rendered = new SkylightInteractor(
       <Skylight hideOnOverlayClicked />
     );
     rendered.show();
-    const overlay = findRenderedDOMComponentWithClass(rendered, 'skylight-overlay');
-    Simulate.click(overlay);
-
-    // Component closes
-    const found = scryRenderedDOMComponentsWithClass(rendered, 'skylight-wrapper');
-    expect(found.length).to.equal(0);
+    rendered.clickOnOverlay();
+    expect(rendered.isOpen()).to.be.false;
   });
 
   it('will hide when the close button is clicked', () => {
-    const rendered = renderIntoDocument(
-      <Skylight />
-    );
+    const rendered = new SkylightInteractor(<Skylight />);
     rendered.show();
-    const closeButton = findRenderedDOMComponentWithClass(rendered, 'skylight-close-button');
-    Simulate.click(closeButton);
-
-    // Component closes
-    const found = scryRenderedDOMComponentsWithClass(rendered, 'skylight-wrapper');
-    expect(found.length).to.equal(0);
+    rendered.clickOnClose();
+    expect(rendered.isOpen()).to.be.false;
   });
 });

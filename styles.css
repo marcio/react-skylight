@@ -80,6 +80,11 @@ body {
   color: #333;
 }
 
+.bg-asphalt {
+  background-color: #34495e;
+  color: #fff;
+}
+
 .code-love {
   padding: 80px 0 20px;
   font-weight: 400;

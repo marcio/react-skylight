@@ -1,6 +1,5 @@
-"use strict";
-const path = require("path");
-const isTddMode = process.argv.indexOf("--tdd") > -1;
+const path = require('path');
+const isTddMode = process.argv.indexOf('--tdd') > -1;
 
 module.exports = config => {
   config.set({
@@ -21,9 +20,9 @@ module.exports = config => {
       module: {
         preLoaders: [
           {
-              test: /\.(js|jsx)$/,
-              include: path.resolve('src/'),
-              loader: 'isparta'
+            test: /\.(js|jsx)$/,
+            include: path.resolve('src/'),
+            loader: 'isparta',
           },
           {
             test: /\.(js|jsx)?$/,
@@ -45,8 +44,8 @@ module.exports = config => {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: isTddMode,
-    browsers: isTddMode ? ['Chrome'] : [ 'PhantomJS' ],
+    browsers: isTddMode ? ['Chrome'] : [ 'PhantomJS'],
     singleRun: !isTddMode,
-    concurrency: Infinity
+    concurrency: Infinity,
   });
 };

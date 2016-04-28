@@ -27,7 +27,7 @@
   "author": "Marcio Gasparotto",
   "license": "MIT",
   "peerDependencies": {
-    "react": "*"
+    "react": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
   },
@@ -41,6 +41,6 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.14.0",
     "jest-cli": "^0.2.1",
-    "react": "^0.14.5"
+    "react": "^0.14.0 || ^15.0.0"
   }
 }

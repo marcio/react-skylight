@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles';
+import assign from './utils/assign';
 
 export default class SkyLightStateless extends React.Component {
 
@@ -16,7 +17,7 @@ export default class SkyLightStateless extends React.Component {
   }
 
   render() {
-    const mergeStyles = key => Object.assign({}, styles[key], this.props[key]);
+    const mergeStyles = key => assign({}, styles[key], this.props[key]);
     const { isVisible } = this.props;
     const dialogStyles = mergeStyles('dialogStyles');
     const overlayStyles = mergeStyles('overlayStyles');

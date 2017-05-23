@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SkylightStateless from './skylightstateless';
 
 const isOpening = (s1, s2) => !s1.isVisible && s2.isVisible;
@@ -63,11 +64,11 @@ SkyLight.displayName = 'SkyLight';
 
 SkyLight.propTypes = {
   ...SkylightStateless.sharedPropTypes,
-  afterClose: React.PropTypes.func,
-  afterOpen: React.PropTypes.func,
-  beforeClose: React.PropTypes.func,
-  beforeOpen: React.PropTypes.func,
-  hideOnOverlayClicked: React.PropTypes.bool,
+  afterClose: PropTypes.func,
+  afterOpen: PropTypes.func,
+  beforeClose: PropTypes.func,
+  beforeOpen: PropTypes.func,
+  hideOnOverlayClicked: PropTypes.bool,
 };
 
 SkyLight.defaultProps = {

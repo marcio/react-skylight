@@ -36,6 +36,7 @@ How to use
 
 
 ## Release History
+ * 2017-05-23   v0.4.2   Solve propTypes warnings, and some fixes
  * 2016-08-31   v0.4.1   Polyfill Object.assign() to works in IE
  * 2016-04-27   v0.4.0   Fix issue #35 (numeric string value for CSS property), up to react 15.0.1 and merged pull request to support Stateless (thanks @darthtrevino)
  * 2016-01-09   v0.3.0   Rewrite to ES2015, overlay callback and new site.

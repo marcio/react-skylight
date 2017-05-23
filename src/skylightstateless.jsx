@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles';
 import assign from './utils/assign';
 
@@ -56,19 +57,19 @@ export default class SkyLightStateless extends React.Component {
 SkyLightStateless.displayName = 'SkyLightStateless';
 
 SkyLightStateless.sharedPropTypes = {
-  closeButtonStyle: React.PropTypes.object,
-  dialogStyles: React.PropTypes.object,
-  onCloseClicked: React.PropTypes.func,
-  onOverlayClicked: React.PropTypes.func,
-  overlayStyles: React.PropTypes.object,
-  showOverlay: React.PropTypes.bool,
-  title: React.PropTypes.string,
-  titleStyle: React.PropTypes.object,
+  closeButtonStyle: PropTypes.object,
+  dialogStyles: PropTypes.object,
+  onCloseClicked: PropTypes.func,
+  onOverlayClicked: PropTypes.func,
+  overlayStyles: PropTypes.object,
+  showOverlay: PropTypes.bool,
+  title: PropTypes.string,
+  titleStyle: PropTypes.object,
 };
 
 SkyLightStateless.propTypes = {
   ...SkyLightStateless.sharedPropTypes,
-  isVisible: React.PropTypes.bool,
+  isVisible: PropTypes.bool,
 };
 
 SkyLightStateless.defaultProps = {

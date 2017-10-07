@@ -75,7 +75,7 @@ export default class SkyLightStateless extends React.Component {
     }
 
     return (
-      <section className="skylight-wrapper">
+      <section className=`skylight-wrapper ${this.props.className}`>
         {overlay}
         <div className="skylight-dialog" style={finalStyle}>
           <a 
@@ -84,7 +84,7 @@ export default class SkyLightStateless extends React.Component {
             onClick={() => this.onCloseClicked()}
             style={closeButtonStyle}
           >
-            &times;
+            {this.props.closeButton || '&times;'}
           </a>
           {title}
             {this.props.children}
@@ -108,6 +108,8 @@ SkyLightStateless.sharedPropTypes = {
   transitionDuration: PropTypes.number,
   titleStyle: PropTypes.object,
   closeOnEsc: PropTypes.bool,
+  className: PropTypes.string,
+  closeButton: PropTypes.any,
 };
 
 SkyLightStateless.propTypes = {
@@ -123,4 +125,5 @@ SkyLightStateless.defaultProps = {
   closeButtonStyle: styles.closeButtonStyle,
   transitionDuration: 200,
   closeOnEsc: true,
+  className: '',
 };

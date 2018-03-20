@@ -14,7 +14,7 @@ const styles = {
   },
   dialogStyles: {
     width: '50%',
-    height: '400px',
+    minHeight: '400px',
     position: 'fixed',
     top: '50%',
     left: '50%',

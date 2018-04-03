@@ -40,6 +40,7 @@ How to use
 
 
 ## Release History
+ * 2018-04-03   v0.5.1   Change dialog style height to minHeight, react 16 support, remove unused dependencies
  * 2017-09-20   v0.5.0   Add animation, ESC to close, title as component and and some fixes
  * 2017-05-23   v0.4.2   Solve propTypes warnings, and some fixes
  * 2016-08-31   v0.4.1   Polyfill Object.assign() to works in IE

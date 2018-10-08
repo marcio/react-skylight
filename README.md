@@ -1,21 +1,18 @@
-react-skylight
-==============
+# [React SkyLight](http://marcio.github.io/react-skylight)
 
 React SkyLight is a simple react component for modals and dialogs. Powerful, lightweight and customizable design.
 
-[React skylight DEMOS and DOCS.](http://marcio.github.io/react-skylight)
+[React SkyLight DEMOS and DOCS.](http://marcio.github.io/react-skylight)
 
-Installation
-------------
+## Installation
 
-```sh
-npm install react-skylight --save
-#Or
-yarn add react-skylight
+```bash
+$ npm install react-skylight --save
+# Installation via Yarn
+$ yarn add react-skylight
 ```
 
-Features
---------
+## Features
 
 - Very simple modal/dialog
 - Animation support
@@ -27,19 +24,13 @@ Features
 - Callback on overlay click
 - All styles can be overridden
 
-
-How to use
---------------------
+## How to use
 
 [React skylight DEMOS and DOCS.](http://marcio.github.io/react-skylight)
-
-
-
-##Enjoy!
-
-
+Enjoy!
 
 ## Release History
+
  * 2018-04-03   v0.5.1   Change dialog style height to minHeight, react 16 support, remove unused dependencies
  * 2017-09-20   v0.5.0   Add animation, ESC to close, title as component and and some fixes
  * 2017-05-23   v0.4.2   Solve propTypes warnings, and some fixes

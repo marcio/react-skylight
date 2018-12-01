@@ -41,6 +41,8 @@ export default class SkyLightStateless extends React.Component {
     if (!this.props.showCloseButton) {
       return;
     }
+    const mergeStyles = key => assign({}, styles[key], this.props[key]);
+    const closeButtonStyle = mergeStyles('closeButtonStyle');
     return (
       <a
         role="button"
@@ -58,7 +60,6 @@ export default class SkyLightStateless extends React.Component {
     const { isVisible } = this.props;
     const dialogStyles = mergeStyles('dialogStyles');
     const overlayStyles = mergeStyles('overlayStyles');
-    const closeButtonStyle = mergeStyles('closeButtonStyle');
     const titleStyle = mergeStyles('titleStyle');
 
     let finalStyle;
@@ -119,7 +120,7 @@ SkyLightStateless.sharedPropTypes = {
   closeOnEsc: PropTypes.bool,
   className: PropTypes.string,
   closeButton: PropTypes.any,
-  showCloseButton: protoProps.bool,
+  showCloseButton: PropTypes.bool,
 };
 
 SkyLightStateless.propTypes = {

@@ -119,6 +119,7 @@ SkyLightStateless.sharedPropTypes = {
   closeOnEsc: PropTypes.bool,
   className: PropTypes.string,
   closeButton: PropTypes.any,
+  showCloseButton: protoProps.bool,
 };
 
 SkyLightStateless.propTypes = {
@@ -135,4 +136,5 @@ SkyLightStateless.defaultProps = {
   transitionDuration: 200,
   closeOnEsc: true,
   className: '',
+  showCloseButton: true,
 };

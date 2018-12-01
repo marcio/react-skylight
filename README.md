@@ -14,6 +14,7 @@ $ yarn add react-skylight
 
 ## Features
 
+- Show/hide close button
 - Very simple modal/dialog
 - Animation support
 - Stateless

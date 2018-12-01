@@ -52,4 +52,9 @@ describe('The SkylightStateless component', () => {
     rendered.clickOnOverlay();
     // no error thrown
   });
+
+  it("will not render close button when showCloseButton prop is false", () => {
+    const rendered = new SkylightInteractor(<SkylightStateless isVisible showCloseButton={false} />);
+    expect(rendered.isCloseButtonVisible()).to.be.false;
+  });
 });

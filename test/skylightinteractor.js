@@ -38,6 +38,11 @@ export default class SkylightInteractor {
     Simulate.click(closeButton);
   }
 
+  isCloseButtonVisible() {
+    const found = scryRenderedDOMComponentsWithClass(this._component, 'skylight-close-button');
+    return found.length === 1;
+  }
+
   isOpen() {
     const found = scryRenderedDOMComponentsWithClass(this._component, 'skylight-overlay');
     return found.length === 1;

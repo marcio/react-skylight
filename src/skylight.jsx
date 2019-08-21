@@ -12,7 +12,7 @@ export default class SkyLight extends React.Component {
     this.state = { isVisible: false };
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     if (isOpening(this.state, nextState) && this.props.beforeOpen) {
       this.props.beforeOpen();
     }
@@ -20,6 +20,8 @@ export default class SkyLight extends React.Component {
     if (isClosing(this.state, nextState) && this.props.beforeClose) {
       this.props.beforeClose();
     }
+
+    return true;
   }
 
   componentDidUpdate(prevProps, prevState) {

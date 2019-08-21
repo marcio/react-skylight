@@ -5,7 +5,7 @@ import assign from './utils/assign';
 
 export default class SkyLightStateless extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     document.addEventListener("keydown", this._handlerEsc.bind(this));
   }
 

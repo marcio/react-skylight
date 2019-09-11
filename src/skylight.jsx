@@ -14,16 +14,22 @@ export default class SkyLight extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { afterOpen, afterClose, beforeOpen, beforeClose } = this.props;
+    const {
+      afterOpen, afterClose, beforeOpen, beforeClose
+    } = this.props;
     const { isOperationInProgress, nextIsVisible } = this.state;
 
     if (isOperationInProgress && nextIsVisible === true) {
-      beforeOpen && beforeOpen();
+      if (beforeOpen) {
+        beforeOpen();
+      }
       this._completeShowOperation();
     }
 
     if (isOperationInProgress && nextIsVisible === false) {
-      beforeClose && beforeClose();
+      if (beforeClose) {
+        beforeClose();
+      }
       this._completeHideOperation();
     }
 

@@ -16,25 +16,25 @@ module.exports = config => {
     },
     webpack: {
       resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
       },
       module: {
-        preLoaders: [
+        rules: [
           {
+            enforce: 'pre',
             test: /\.(js|jsx)$/,
             include: path.resolve('src/'),
-            loader: 'isparta',
+            loader: 'isparta-loader',
           },
           {
+            enforce: 'pre',
             test: /\.(js|jsx)?$/,
-            loader: 'eslint',
+            loader: 'eslint-loader',
             exclude: /node_modules/,
           },
-        ],
-        loaders: [
           {
             test: /\.(js|jsx)?$/,
-            loader: 'babel',
+            loader: 'babel-loader',
             exclude: /node_modules/,
           },
         ],

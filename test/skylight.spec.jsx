@@ -2,8 +2,9 @@
 /* eslint-disable no-return-assign */
 import React from 'react';
 import { expect } from 'chai';
+import 'jsdom-global/register';
 import Skylight from '../src/skylight';
-import SkylightInteractor from './SkylightInteractor';
+import SkylightInteractor from './skylightinteractor';
 
 describe('The Skylight component', () => {
   it('will not render initially', () => {

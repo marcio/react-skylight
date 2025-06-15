@@ -8,7 +8,7 @@
     "watch": "babel src --watch -d lib",
     "develop": "karma start --tdd",
     "karma": "karma start",
-    "test": "npm-run-all karma build"
+    "test": "mocha --require babel-register test/**/*.spec.js test/**/*.spec.jsx"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,8 @@
     "eslint-plugin-react": "^7.0.1",
     "isparta-loader": "^2.0.0",
     "jest-cli": "^20.0.3",
+    "jsdom": "^26.1.0",
+    "jsdom-global": "^3.0.2",
     "karma": "^1.7.0",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.1.1",

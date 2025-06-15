@@ -39,7 +39,9 @@ export default class SkylightInteractor {
   }
 
   isOpen() {
-    const found = scryRenderedDOMComponentsWithClass(this._component, 'skylight-overlay');
-    return found.length === 1;
+    if (typeof this._component.state !== 'undefined' && this._component.state && typeof this._component.state.isVisible !== 'undefined') {
+      return this._component.state.isVisible;
+    }
+    return !!this._component.props.isVisible;
   }
 }

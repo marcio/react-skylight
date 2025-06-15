@@ -2,8 +2,9 @@
 /* eslint-disable no-return-assign */
 import React from 'react';
 import { expect } from 'chai';
+import 'jsdom-global/register';
 import SkylightStateless from '../src/skylightstateless';
-import SkylightInteractor from './SkylightInteractor';
+import SkylightInteractor from './skylightinteractor';
 
 describe('The SkylightStateless component', () => {
   it('will not render when it is not visible', () => {

@@ -5,7 +5,7 @@ import {
   scryRenderedDOMComponentsWithClass,
   findRenderedDOMComponentWithClass,
   Simulate,
-} from 'react-addons-test-utils';
+} from 'react-dom/test-utils';
 
 /**
  * A test wrapper for skylight components that performs DOM interaction.

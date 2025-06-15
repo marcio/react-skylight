@@ -1,28 +1,24 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-return-assign */
 import React from 'react';
-import { expect } from 'chai';
-import 'jsdom-global/register';
 import Skylight from '../src/skylight';
 import SkylightInteractor from './skylightinteractor';
 
 describe('The Skylight component', () => {
   it('will not render initially', () => {
     const rendered = new SkylightInteractor(<Skylight />);
-    expect(rendered.isOpen()).to.be.false;
+    expect(rendered.isOpen()).toBe(false);
   });
 
   it('will render on show()', () => {
     const rendered = new SkylightInteractor(<Skylight />);
     rendered.show();
-    expect(rendered.isOpen()).to.be.true;
+    expect(rendered.isOpen()).toBe(true);
   });
 
   it('will hide on hide()', () => {
     const rendered = new SkylightInteractor(<Skylight />);
     rendered.show();
     rendered.hide();
-    expect(rendered.isOpen()).to.be.false;
+    expect(rendered.isOpen()).toBe(false);
   });
 
   it('will emit beforeOpen and afterOpen events when opening', () => {
@@ -30,17 +26,17 @@ describe('The Skylight component', () => {
     let afterTriggered = false;
     const onBefore = () => beforeTriggered = true;
     const onAfter = () => {
-      expect(beforeTriggered).to.be.true;
+      expect(beforeTriggered).toBe(true);
       afterTriggered = true;
     };
     const rendered = new SkylightInteractor(
       <Skylight beforeOpen={onBefore} afterOpen={onAfter} />
     );
-    expect(beforeTriggered).to.be.false;
-    expect(afterTriggered).to.be.false;
+    expect(beforeTriggered).toBe(false);
+    expect(afterTriggered).toBe(false);
     rendered.show();
-    expect(beforeTriggered).to.be.true;
-    expect(afterTriggered).to.be.true;
+    expect(beforeTriggered).toBe(true);
+    expect(afterTriggered).toBe(true);
   });
 
   it('will emit beforeClose and afterClose events when closing', () => {
@@ -48,18 +44,18 @@ describe('The Skylight component', () => {
     let afterTriggered = false;
     const onBefore = () => beforeTriggered = true;
     const onAfter = () => {
-      expect(beforeTriggered).to.be.true;
+      expect(beforeTriggered).toBe(true);
       afterTriggered = true;
     };
     const rendered = new SkylightInteractor(
       <Skylight beforeClose={onBefore} afterClose={onAfter} />
     );
     rendered.show();
-    expect(beforeTriggered).to.be.false;
-    expect(afterTriggered).to.be.false;
+    expect(beforeTriggered).toBe(false);
+    expect(afterTriggered).toBe(false);
     rendered.hide();
-    expect(beforeTriggered).to.be.true;
-    expect(afterTriggered).to.be.true;
+    expect(beforeTriggered).toBe(true);
+    expect(afterTriggered).toBe(true);
   });
 
   it('will emit an onOverlayClicked event', () => {
@@ -69,8 +65,8 @@ describe('The Skylight component', () => {
     );
     rendered.show();
     rendered.clickOnOverlay();
-    expect(clicked).to.be.true;
-    expect(rendered.isOpen()).to.be.true;
+    expect(clicked).toBe(true);
+    expect(rendered.isOpen()).toBe(true);
   });
 
   it('will close when the overlay is clicked when hideOnOverlayClicked prop is true', () => {
@@ -79,13 +75,13 @@ describe('The Skylight component', () => {
     );
     rendered.show();
     rendered.clickOnOverlay();
-    expect(rendered.isOpen()).to.be.false;
+    expect(rendered.isOpen()).toBe(false);
   });
 
   it('will hide when the close button is clicked', () => {
     const rendered = new SkylightInteractor(<Skylight />);
     rendered.show();
     rendered.clickOnClose();
-    expect(rendered.isOpen()).to.be.false;
+    expect(rendered.isOpen()).toBe(false);
   });
 });

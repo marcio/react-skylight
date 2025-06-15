@@ -1,27 +1,23 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-return-assign */
 import React from 'react';
-import { expect } from 'chai';
-import 'jsdom-global/register';
 import SkylightStateless from '../src/skylightstateless';
 import SkylightInteractor from './skylightinteractor';
 
 describe('The SkylightStateless component', () => {
   it('will not render when it is not visible', () => {
     const rendered = new SkylightInteractor(<SkylightStateless />);
-    expect(rendered.isOpen()).to.be.false;
+    expect(rendered.isOpen()).toBe(false);
   });
 
   it('will render when it is visible', () => {
     const rendered = new SkylightInteractor(<SkylightStateless isVisible />);
-    expect(rendered.isOpen()).to.be.true;
+    expect(rendered.isOpen()).toBe(true);
   });
 
   it('will not render the overlay when the showOverlay prop is false', () => {
     const rendered = new SkylightInteractor(
       <SkylightStateless isVisible showOverlay={false} />
     );
-    expect(rendered.isOverlayVisible()).to.be.false;
+    expect(rendered.isOverlayVisible()).toBe(false);
   });
 
   it('will emit an event when the overlay is clicked', () => {
@@ -30,7 +26,7 @@ describe('The SkylightStateless component', () => {
       <SkylightStateless isVisible onOverlayClicked={() => clicked = true} />
     );
     rendered.clickOnOverlay();
-    expect(clicked).to.be.true;
+    expect(clicked).toBe(true);
   });
 
   it('will emit an event when the close button is clicked', () => {
@@ -39,7 +35,7 @@ describe('The SkylightStateless component', () => {
       <SkylightStateless isVisible onCloseClicked={() => clicked = true} />
     );
     rendered.clickOnClose();
-    expect(clicked).to.be.true;
+    expect(clicked).toBe(true);
   });
 
   it('will not blow up when no onCloseClicked prop is set', () => {

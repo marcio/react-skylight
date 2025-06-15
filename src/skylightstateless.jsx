@@ -1,27 +1,32 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import assign from './utils/assign';
 
 export default class SkyLightStateless extends React.Component {
 
-  componentWillMount() {
-    document.addEventListener("keydown", this._handlerEsc.bind(this));
+  constructor(props) {
+    super(props);
+    this.handleEsc = this.handleEsc.bind(this);
+    this.portalNode = document.createElement('div');
+    this.titleId = `skylight-title-${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  componentDidMount() {
+    document.body.appendChild(this.portalNode);
+    document.addEventListener('keydown', this.handleEsc);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this._handlerEsc.bind(this));
+    document.removeEventListener('keydown', this.handleEsc);
+    document.body.removeChild(this.portalNode);
   }
 
-  _handlerEsc(evt) {
-    var isEscape = false;
-    if ("key" in evt) {
-      isEscape = (evt.key == "Escape" || evt.key == "Esc");
-    } else {
-      isEscape = (evt.keyCode == 27);
-    }
-    if (isEscape && this.props.closeOnEsc && this.props.isVisible) {
-      this.props.onCloseClicked();
+  handleEsc(evt) {
+    if (evt.key === 'Escape' && this.props.closeOnEsc && this.props.isVisible) {
+      if (this.props.onCloseClicked) {
+        this.props.onCloseClicked();
+      }
     }
   }
 
@@ -38,7 +43,7 @@ export default class SkyLightStateless extends React.Component {
   }
 
   render() {
-    const mergeStyles = key => assign({}, styles[key], this.props[key]);
+    const mergeStyles = key => ({ ...styles[key], ...this.props[key] });
     const { isVisible } = this.props;
     const dialogStyles = mergeStyles('dialogStyles');
     const overlayStyles = mergeStyles('overlayStyles');
@@ -46,11 +51,11 @@ export default class SkyLightStateless extends React.Component {
     const titleStyle = mergeStyles('titleStyle');
     
     let finalStyle;
-    if(isVisible) {
-      finalStyle = assign({}, dialogStyles, styles.animationOpen);
+    if (isVisible) {
+      finalStyle = { ...dialogStyles, ...styles.animationOpen };
       overlayStyles.display = 'block';
     } else {
-      finalStyle = assign({}, dialogStyles, styles.animationBase);
+      finalStyle = { ...dialogStyles, ...styles.animationBase };
       overlayStyles.display = 'none';
     }
     
@@ -60,7 +65,8 @@ export default class SkyLightStateless extends React.Component {
     let overlay;
     if (this.props.showOverlay) {
       overlay = (
-        <div className="skylight-overlay"
+        <div
+          className="skylight-overlay"
           onClick={() => this.onOverlayClicked()}
           style={overlayStyles}
         />
@@ -68,18 +74,25 @@ export default class SkyLightStateless extends React.Component {
     }
 
     let title;
-    if(React.isValidElement(this.props.title)){
+    if (React.isValidElement(this.props.title)) {
       title = this.props.title;
     } else {
-      title = this.props.title ? <h2 style={titleStyle}>{this.props.title}</h2> : null;
+      title = this.props.title ? (
+        <h2 id={this.titleId} style={titleStyle}>{this.props.title}</h2>
+      ) : null;
     }
 
-    return (
+    const content = (
       <section className={`skylight-wrapper ${this.props.className}`}>
         {overlay}
-        <div className="skylight-dialog" style={finalStyle}>
-          <a 
-            role="button" 
+        <div
+          role="dialog"
+          aria-labelledby={this.props.title ? this.titleId : undefined}
+          className="skylight-dialog"
+          style={finalStyle}
+        >
+          <a
+            role="button"
             className="skylight-close-button"
             onClick={() => this.onCloseClicked()}
             style={closeButtonStyle}
@@ -87,10 +100,12 @@ export default class SkyLightStateless extends React.Component {
             {this.props.closeButton || '\u00D7'}
           </a>
           {title}
-            {this.props.children}
+          {this.props.children}
         </div>
       </section>
     );
+
+    return ReactDOM.createPortal(content, this.portalNode);
     
   }
 }
